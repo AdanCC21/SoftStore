@@ -1,0 +1,83 @@
+/* COLORES */
+/* 
+Mas claro ^
+
+color1 { #2e314f };
+color2 { #232541 };
+color3 { #171933 };
+color4 { #0c0c24 };
+color5 { #000016 }; 
+
+Mas Oscuro _
+*/
+
+body {
+    font-family: "Montserrat",sans-serif;
+    text-align: center;
+    color: white;
+    background-color: #000016;
+    margin: 0;
+}
+
+.LgBase{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+    height: 98vh;
+}
+
+.LgContainer{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: space-around;
+
+    background-color: #171933;
+
+    border-radius: 32px;
+    width: 30%;
+    min-height: 40%;
+    max-height: 60%;
+}
+
+
+.LgContainer h1{
+    font-size: 42px;
+}
+
+.LgInputsSection{
+    display: flex;
+    flex-direction: column;
+    max-height: 50%;
+    width: 100%;
+    align-items: center;
+}
+
+.LgInputsSection input{
+    border: 10px solid white;
+    margin-bottom: 5%;
+    border-radius: 32px;
+    width: 80%;
+    
+}
+
+.LgButtons{
+    display: flex;
+    flex-direction: c;
+    width: 60%;
+    justify-content: space-around;
+}
+
+.LgButtons button{
+    border: 0;   
+    border-radius: 32px;
+    height: 30px;
+    width: 40%;
+    margin-bottom: 10%;
+    cursor: pointer;
+}
+
+

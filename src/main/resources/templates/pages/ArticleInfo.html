@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fuente de letra -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <title>MonkeyStore</title>
+
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="/css/article.css" type="text/css">
+    <link rel="stylesheet" href="/css/topBar.css" type="text/css">
+</head>
+<body>
+    <section class="TopBar">
+        <a href="/Articles" style="color: white; text-decoration: none;">
+            <h1>CimaStore</h1>
+        </a>
+        <input placeholder="Buscar Articulos">
+        <img src="/assets/celular_triste.png">
+    </section>
+
+    <!-- Base -->
+    <section class="articleBase">
+        <div class="articleInfo">
+            <section>
+                <img src="/assets/celular_triste.png">
+            </section>
+
+            <!-- Informacion -->
+            <main th:each="art : ${articulo}" >
+                <h1 th:text="${art.name}">Titulo</h1>
+                <p th:text="${art.price}">Descripcion</p>
+
+                <a th:href="@{/add/{name}/{price}(name=${art.name}, price=${art.price})}" style="color:white; text-decoration:none;">Agregar</a>
+            </main>
+        </div>
+    </section>
+</body>
+</html>

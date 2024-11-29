@@ -1,0 +1,42 @@
+.articleBase{
+    display: flex;
+    flex-wrap: wrap;
+    
+    justify-content: center;
+    align-items: center;
+    
+    height: 100vh;
+    width: 100vw;
+
+}
+
+.articleInfo{
+    display: flex;
+    
+    height: 50%;
+    width: 50%;
+
+    justify-content: space-between;
+    align-items: center;
+    background-color: red;
+}
+
+
+.articleInfo section{
+    width: 50%;
+}
+
+.articleInfo section img{
+    width: 80%;
+}
+
+.articleInfo main{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    
+    width: 50%;
+    height: 100%;
+}

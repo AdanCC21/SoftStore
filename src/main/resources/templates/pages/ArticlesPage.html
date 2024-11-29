@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fuente de letra -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <title>MonkeyStore</title>
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="/css/articles.css" type="text/css">
+    <link rel="stylesheet" href="/css/topBar.css" type="text/css">
+</head>
+<body>
+    <section class="TopBar">
+        <h1>CimaStore</h1>
+        <form>
+            <input type="text" id="articuloName" placeholder="Ingrese el nombre del artículo" />
+            <button type="button" onclick="window.location.href='/search/' + document.getElementById('articuloName').value">Enviar</button>
+        </form>
+
+        <img src="/assets/celular_triste.png">
+    </section>
+
+    <main class="Table">
+        <a th:each="articulo : ${listaArticulos}" class="TableItem" th:href="@{/article/{name}/{price}(name=${articulo.name}, price=${articulo.price})}" >
+            <img src="/assets/celular_triste.png">
+            <h3 th:text="${articulo.name}"></h3>
+            <p th:text="'Price ' + ${articulo.price}"></p>
+        </a>
+    </main>
+
+    <button onclick="window.location.href='/car'">ShopCar</button>
+</body>
+</html>

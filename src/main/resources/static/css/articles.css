@@ -1,0 +1,35 @@
+.Table{
+    display: grid;
+    /* Num de columnas, tamaño en porcentaje al padre (25 del tamaño del padre) */
+    grid-template-columns: repeat(4,25%);
+    /* Size of rows */
+    grid-template-rows: auto;
+    
+    /* Margin in, Top, left, button, right */
+    margin: 10px 20px 0 20px;
+}
+
+.Table a{
+    text-decoration: none;
+    color: white;
+}
+
+.TableItem{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    background-color: #0c0c24;
+    
+    align-items: center;
+    
+    margin: 5px;
+}
+
+.TableItem button{
+    z-index: 2;
+}
+
+.TableItem img{
+    max-width: 20%;
+}
