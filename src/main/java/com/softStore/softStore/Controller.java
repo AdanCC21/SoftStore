@@ -79,9 +79,9 @@ public class Controller {
         return "pages/car";
     }
 
-    @GetMapping("/notifications")
-    public String getNoti(Model model){
-        return "pages/notificacion";
+    @GetMapping("/chat")
+    public String goToChat(Model model){
+        return "pages/chat";
     }
 
 }

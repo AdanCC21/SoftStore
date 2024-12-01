@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <title>MonkeyStore</title>
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="/css/articles.css" type="text/css">
+    <link rel="stylesheet" href="/css/topBar.css" type="text/css">
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+</head>
+<body>
+    <section class="TopBar">
+        <a href="/Articles" style="color: white; text-decoration: none;">
+            <h1>CimaStore</h1>
+        </a>
+        <input placeholder="Buscar Articulos">
+        <a href="chat" style="color: white; text-decoration: none;">Ayuda</a>
+    </section>
+
+    <h1>Chat en Tiempo Real</h1>
+
+    <div id="chat">
+        <div id="messages"></div>
+        <input id="messageInput" type="text" placeholder="Escribe tu mensaje aquí..." />
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+
+    <script>
+        let stompClient = null;
+
+        function connect() {
+            const socket = new SockJS('/chat');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function () {
+                console.log("Conectado al WebSocket");
+                stompClient.subscribe('/topic/messages', function (message) {
+                    showMessage(message.body);
+                });
+            });
+        }
+
+        function sendMessage() {
+            const message = document.getElementById("messageInput").value;
+            stompClient.send("/app/sendMessage", {}, message);
+            document.getElementById("messageInput").value = '';
+        }
+
+        function showMessage(message) {
+            const messagesDiv = document.getElementById("messages");
+            const messageElement = document.createElement("div");
+            messageElement.textContent = message;
+            messagesDiv.appendChild(messageElement);
+        }
+
+        connect();
+    </script>
+</body>
+</html>
