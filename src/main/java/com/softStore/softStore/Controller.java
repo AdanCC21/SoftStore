@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @org.springframework.stereotype.Controller
@@ -13,11 +14,6 @@ public class Controller {
 
     // Variable para manejar la interaccion con el archivo json
     private final jsonService jsonConnect = new jsonService();
-
-    // Constructor
-//    public Controller(jsonService json){
-//        this.jsonConnect = json;
-//    }
 
     @GetMapping("/Articles")
     public  String showArticles(Model mod){
@@ -33,38 +29,36 @@ public class Controller {
     }
 
     @GetMapping("/search/{name}")
-    public String searchArticle(@PathVariable String name, Model model) throws IOException {
-        Articles article = jsonConnect.searchArticle(name);
-        if(article == null){
-            model.addAttribute("articulo",new Articles("error",9.0));
-        }else{
-            model.addAttribute("articulo",article);
-        }
-        double pr = article.getPrice();
+    public String searchArticles(@PathVariable String name, Model model) throws IOException{
+        List<Articles> articles = new ArrayList<>();
+        articles = jsonConnect.searchArticles(name);
 
-        String url = "/article/" + article.getName() + "/" + pr;
+        model.addAttribute("listaArticulos",articles);
 
-        // Redirigir a la URL deseada con los parámetros
-        return "redirect:"+url;
+        return "pages/ArticlesPage";
     }
 
-    @GetMapping("/article/{name}/{price}")
-    public String articleInfo(@PathVariable String name,@PathVariable double price,Model model){
-        Articles artSelected = new Articles(name,price);
-        model.addAttribute("articulo",artSelected);
+    @GetMapping("/article/{id}")
+    public String articleInfo(@PathVariable int id, Model model) throws IOException {
+        Articles article = jsonConnect.searchArticleForId(id);
+        if(article == null){
+            return "pages/ArticlesPage";
+        }
+        model.addAttribute("articulo",article);
+
         return "pages/ArticleInfo";
     }
 
-    @GetMapping("/add/{name}/{price}")
-    public String addArticle(@PathVariable String name, @PathVariable double price, Model model)throws IOException {
-        Articles temp = new Articles(name,price);
-        jsonConnect.addValue(temp);
+    @GetMapping("/add/{name}/{price}/{id}")
+    public String addArticle(@PathVariable String name, @PathVariable double price, @PathVariable int id, Model model)throws IOException {
+        Articles temp = new Articles(name,price,id);
+        jsonConnect.addToShopCar(temp);
         return "pages/done";
     }
 
     @GetMapping("/delete/{name}")
     public String deleteArticle(@PathVariable String name, Model model)throws IOException {
-        jsonConnect.deleteValue(name);
+        jsonConnect.deleteToShopCar(name);
         return "pages/done";
     }
 

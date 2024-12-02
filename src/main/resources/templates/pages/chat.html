@@ -39,7 +39,6 @@
             const socket = new SockJS('/chat');
             stompClient = Stomp.over(socket);
             stompClient.connect({}, function () {
-                console.log("Conectado al WebSocket");
                 stompClient.subscribe('/topic/messages', function (message) {
                     showMessage(message.body);
                 });

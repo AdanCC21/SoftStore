@@ -11,43 +11,48 @@ import java.util.List;
 
 public class jsonService {
     // Json - > Java && Java - > Json
-    private final ObjectMapper obj = new ObjectMapper();
+    private final ObjectMapper objectMap = new ObjectMapper();
 
-    private final String dataBase = "src/main/resources/articles.json";
-    private final String shopCar = "src/main/resources/carrito.json";
+    private final String dataBaseRoute = "src/main/resources/articles.json";
+    private final String shopCarRoute = "src/main/resources/carrito.json";
 
 
+    // ----------------------------------------------------------------------------------------
     public void saveJson(List<Articles> articles) throws IOException{
-        obj.writerWithDefaultPrettyPrinter().writeValue(new File(dataBase),articles);
+        objectMap.writerWithDefaultPrettyPrinter().writeValue(new File(dataBaseRoute),articles);
     }
 
     public void saveShopCar(List<Articles> articles) throws IOException{
-        obj.writerWithDefaultPrettyPrinter().writeValue(new File(shopCar),articles);
+        objectMap.writerWithDefaultPrettyPrinter().writeValue(new File(shopCarRoute),articles);
     }
+    // ----------------------------------------------------------------------------------------
 
-    public List<com.softStore.softStore.Class.Articles> getArticles() throws IOException{
-        File bd = new File(dataBase);
+    // ----------------------------------------------------------------------------------------
+    public List<Articles> getArticles() throws IOException{
+        File bd = new File(dataBaseRoute);
         if(!bd.exists()){
             return new ArrayList<>();
         }
-        return obj.readValue(bd, new TypeReference<List<Articles>>() {});
+        return objectMap.readValue(bd, new TypeReference<List<Articles>>() {});
     }
 
-    public List<com.softStore.softStore.Class.Articles> getShopCar()throws IOException{
-        File car = new File(shopCar);
+    public List<Articles> getShopCar()throws IOException{
+        File car = new File(shopCarRoute);
         if(!car.exists()){
             return new ArrayList<>();
         }
-        return obj.readValue(car, new TypeReference<List<Articles>>() {});
+        return objectMap.readValue(car, new TypeReference<List<Articles>>() {});
     }
+    // ----------------------------------------------------------------------------------------
 
-    public void addValue(Articles newArticle) throws IOException {
+
+    public void addToShopCar(Articles newArticle) throws IOException {
         List<Articles> articlesList = getShopCar();
         articlesList.add(newArticle);
         saveShopCar(articlesList);
     }
 
-    public boolean deleteValue(String name) throws  IOException{
+    public boolean deleteToShopCar(String name) throws  IOException{
         List<Articles> articlesList = getShopCar();
         boolean done = false;
         for( Articles ar : articlesList){
@@ -61,13 +66,37 @@ public class jsonService {
         return done;
     }
 
-    public com.softStore.softStore.Class.Articles searchArticle(String name) throws IOException {
+/*
+    public Articles searchArticle(String name) throws IOException {
         List<Articles> list = getArticles();
         for(Articles temp : list){
             if(temp.getName().equals(name)){
                 return temp;
             }
         }
-        return new Articles("ADAA",20);
+        return new Articles("Default",20,-1);
+    }
+
+ */
+
+    public List<Articles> searchArticles(String name) throws IOException {
+        List<Articles> list = getArticles();
+        List<Articles> output = new ArrayList<>();
+
+        for(Articles temp : list){
+            if(temp.getName().equals(name)){
+                output.add(temp);
+            }
+        }
+        return output;
+    }
+    public Articles searchArticleForId(int id)throws IOException{
+        List<Articles> dataBase = getArticles();
+        for( var temp : dataBase){
+            if(temp.id == id){
+                return temp;
+            }
+        }
+        return null;
     }
 }

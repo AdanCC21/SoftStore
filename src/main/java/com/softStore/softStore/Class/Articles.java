@@ -1,18 +1,25 @@
 package com.softStore.softStore.Class;
 
 public class Articles {
-    String name;
-    double price;
+    public String name;
+    public double price;
+    public int id;
 
-    public Articles(String name, double price){
-        this.name= name;
+    public Articles(String name, double price, int id) {
+        this.name = name;
         this.price = price;
+        this.id = id;
     }
 
-    public Articles(){
-        this.name="";
-        this.price=0.0;
+    public Articles() {
+        this.name = "";
+        this.price = 0.0;
+        this.id = 0;
     }
+
+    public int getId() { return id;}
+
+    public void setId(int id) { this.id = id; }
 
     public String getName() { return name; }
 

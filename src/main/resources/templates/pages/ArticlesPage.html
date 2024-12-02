@@ -25,7 +25,7 @@
     </section>
 
     <main class="Table">
-        <a th:each="articulo : ${listaArticulos}" class="TableItem" th:href="@{/article/{name}/{price}(name=${articulo.name}, price=${articulo.price})}" >
+        <a th:each="articulo : ${listaArticulos}" class="TableItem" th:href="@{/article/{id}(id=${articulo.id})}" >
             <img src="/assets/celular_triste.png">
             <h3 th:text="${articulo.name}"></h3>
             <p th:text="'Price ' + ${articulo.price}"></p>

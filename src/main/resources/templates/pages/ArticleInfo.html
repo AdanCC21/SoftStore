@@ -35,7 +35,7 @@
                 <h1 th:text="${art.name}">Titulo</h1>
                 <p th:text="${art.price}">Descripcion</p>
 
-                <a th:href="@{/add/{name}/{price}(name=${art.name}, price=${art.price})}" style="color:white; text-decoration:none;">Agregar</a>
+                <a th:href="@{/add/{name}/{price}/{id}(name=${articulo.name}, price=${articulo.price}, id=${articulo.id})}" style="color:white; text-decoration:none;">Agregar</a>
             </main>
         </div>
     </section>
