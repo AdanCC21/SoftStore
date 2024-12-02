@@ -1,0 +1,15 @@
+#ContinueButton{
+    background-color: #FAD564;
+    color: #1B475D;
+    border: none;
+    margin: auto;
+    padding: 15px 10px;
+    /*border-bottom: 2px solid white;
+    ;*/
+    border-radius: 10px;
+}
+
+.startPage{
+    display: flex;
+    align-items: center;
+}
