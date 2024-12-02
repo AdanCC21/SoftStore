@@ -27,15 +27,20 @@
     <section class="articleBase">
         <div class="articleInfo">
             <section>
-                <img src="/assets/celular_triste.png">
+                <img src="/assets/celular_triste.png" id="articleImage">
             </section>
 
             <!-- Informacion -->
-            <main th:each="art : ${articulo}" >
-                <h1 th:text="${art.name}">Titulo</h1>
+            <main th:each="art : ${articulo}">
+                <h1 th:text="${art.name}" id="articleName">Titulo</h1>
                 <p th:text="${art.price}">Descripcion</p>
 
                 <a th:href="@{/add/{name}/{price}/{id}(name=${articulo.name}, price=${articulo.price}, id=${articulo.id})}" style="color:white; text-decoration:none;">Agregar</a>
+                <script>
+                    var articleName =  document.getElementById("articleName").textContent
+                    var image = document.getElementById("articleImage");
+                    image.src = '/assets/' + articleName.trim() + '.jpg';
+                </script>                
             </main>
         </div>
     </section>

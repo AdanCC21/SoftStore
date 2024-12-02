@@ -24,12 +24,23 @@
 
     <h1>Shop Car</h1>
     <main class="Table">
-        <a class="TableItem" th:each="articulo : ${listaArticulos}" th:href="@{/article/{name}/{price}(name=${articulo.name}, price=${articulo.price})}">
+        <a class="TableItem" th:each="articulo : ${listaArticulos}" th:href="@{/article/{id}(id=${articulo.id})}">
             <img src="/assets/celular_triste.png">
             <h1 th:text="${articulo.name}"></h1>
             <p th:text="${articulo.price}"></p>
-            <a th:href="@{/delete/{name}(name=${articulo.name})}">Delete</a>
+            <a th:href="@{/delete/{id}(id=${articulo.id})}">Delete</a>
         </a>
+        <script>
+            document.querySelectorAll('.TableItem').forEach(item => {
+                const h3 = item.querySelector('h1'); // Selecciona el h3 dentro de cada <a>
+                const img = item.querySelector('img'); // Selecciona la imagen dentro de cada <a>
+
+                if (h3 && img) {
+                    const h3Text = h3.textContent.trim(); // Obtén el texto del h3
+                    img.src = `/assets/${h3Text}.jpg`; // Cambia el src de la imagen
+                }
+            });
+        </script>
     </main>
 </body>
 </html>

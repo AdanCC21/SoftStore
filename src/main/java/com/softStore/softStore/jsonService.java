@@ -22,7 +22,7 @@ public class jsonService {
         objectMap.writerWithDefaultPrettyPrinter().writeValue(new File(dataBaseRoute),articles);
     }
 
-    public void saveShopCar(List<Articles> articles) throws IOException{
+    public void saveCart(List<Articles> articles) throws IOException{
         objectMap.writerWithDefaultPrettyPrinter().writeValue(new File(shopCarRoute),articles);
     }
     // ----------------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ public class jsonService {
         return objectMap.readValue(bd, new TypeReference<List<Articles>>() {});
     }
 
-    public List<Articles> getShopCar()throws IOException{
+    public List<Articles> getCart()throws IOException{
         File car = new File(shopCarRoute);
         if(!car.exists()){
             return new ArrayList<>();
@@ -46,38 +46,25 @@ public class jsonService {
     // ----------------------------------------------------------------------------------------
 
 
-    public void addToShopCar(Articles newArticle) throws IOException {
-        List<Articles> articlesList = getShopCar();
+    public void addToCart(Articles newArticle) throws IOException {
+        List<Articles> articlesList = getCart();
         articlesList.add(newArticle);
-        saveShopCar(articlesList);
+        saveCart(articlesList);
     }
 
-    public boolean deleteToShopCar(String name) throws  IOException{
-        List<Articles> articlesList = getShopCar();
+    public boolean deleteFromCart(int id) throws  IOException{
+        List<Articles> articlesList = getCart();
         boolean done = false;
         for( Articles ar : articlesList){
-          if(ar.getName().equals(name)){
+          if(ar.id == id){
               articlesList.remove(ar);
-              saveShopCar(articlesList);
+              saveCart(articlesList);
               done=true;
               break;
           }
         }
         return done;
     }
-
-/*
-    public Articles searchArticle(String name) throws IOException {
-        List<Articles> list = getArticles();
-        for(Articles temp : list){
-            if(temp.getName().equals(name)){
-                return temp;
-            }
-        }
-        return new Articles("Default",20,-1);
-    }
-
- */
 
     public List<Articles> searchArticles(String name) throws IOException {
         List<Articles> list = getArticles();
@@ -90,7 +77,7 @@ public class jsonService {
         }
         return output;
     }
-    public Articles searchArticleForId(int id)throws IOException{
+    public Articles searchArticleById(int id)throws IOException{
         List<Articles> dataBase = getArticles();
         for( var temp : dataBase){
             if(temp.id == id){
