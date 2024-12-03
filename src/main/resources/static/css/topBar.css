@@ -12,13 +12,9 @@
     border-radius: 10px;
 }
 
-button{
-    color: blue;
-}
-
 
 .elBoton {
-    background: blue;
+    background-color: blue;
 }
 
 .elBoton:hover {
