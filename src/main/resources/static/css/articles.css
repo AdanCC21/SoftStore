@@ -7,6 +7,7 @@
     
     /* Margin in, Top, left, button, right */
     margin: 10px 20px 0 20px;
+    border-radius: 50px;
 }
 
 .Table a{
@@ -14,22 +15,44 @@
     color: white;
 }
 
-.TableItem{
+.TableItem {
+    position: relative; /* Para que el pseudo-elemento se posicione relativo a este contenedor */
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-
-    background-color: #0c0c24;
-    
     align-items: center;
-    
     margin: 5px;
+    border-radius: 9px;
+    overflow: hidden; /* Asegura que el fondo no se desborde */
+}
+
+.TableItem::before {
+    content: ''; /* Necesario para pseudo-elemento */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(180, 189, 98, 0.7), rgba(27, 71, 93, 0.7)); /* Fondo con opacidad */
+    z-index: 1;
+    pointer-events: none; /* Permite hacer clic a través de este fondo */
+}
+
+.TableItem > * {
+    position: relative;
+    z-index: 2; /* Asegura que el contenido esté sobre el pseudo-elemento */
 }
 
 .TableItem button{
     z-index: 2;
+
 }
 
 .TableItem img{
-    max-width: 20%;
+    max-width: 50%;
+
+}
+
+.TableItem img:hover{
+    max-width: 75%;
 }

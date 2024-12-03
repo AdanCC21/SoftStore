@@ -8,8 +8,14 @@
     ;*/
     border-radius: 10px;
 }
-
-.startPage{
+main{
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
+.startPage{
+
+}
+
+

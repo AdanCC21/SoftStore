@@ -1,23 +1,26 @@
 .TopBar{
+    margin: 0;
     display: flex;
-    background-color: red;
+    background-color: #1B475D;
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-bottomright: 5px;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    height: 5vh;
 }
 
-.TopBar input{
-    width: 60%;
-    height: 80%;
-    border: none;
+.TopBar button{
+    border-radius: 10px;
 }
 
-.TopBar a{
-    color: white;
-    
+button{
+    color: blue;
 }
 
-.TopBar img{
-    height: 60%;
+
+.elBoton {
+    background: blue;
+}
+
+.elBoton:hover {
+    background-color: #d32f2f;
 }
