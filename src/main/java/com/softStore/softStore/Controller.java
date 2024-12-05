@@ -60,14 +60,14 @@ public class Controller {
         Articles temp = new Articles(name,price,id);
         User user = ct.getCurrentUser();
         jsonConnect.addToCart(temp, user.email);
-        return "pages/done";
+        return "redirect:/car";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteArticle(@PathVariable int id, Model model)throws IOException {
         User user = ct.getCurrentUser();
         jsonConnect.deleteFromCart(id,user.email);
-        return "pages/done";
+        return "redirect:/car";
     }
 
     @GetMapping("/car")
