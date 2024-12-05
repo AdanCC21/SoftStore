@@ -1,22 +1,57 @@
 .TopBar{
-    margin: 0;
+    margin: 0 auto;
     display: flex;
     background-color: #1B475D;
-    -moz-border-radius-bottomleft: 5px;
-    -moz-border-radius-bottomright: 5px;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    padding: 10px 25px;
 }
 
 .TopBar button{
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+    font-size: 25px;
+    border: none;
+    background: #FAD564;
+    padding: 0;
+}
+.TopBar input{
     border-radius: 10px;
+    height: 25px;
+    width: 150px;
+    background: #8EBD9D;
+    border: none;
+}
+#soporte{
+    left: 5px;
+    color: azure;
 }
 
-
-.elBoton {
-    background-color: blue;
+#elBoton {
+    width: 60px;
+    height: 60px;
+    background-color: #FAD564;
+    color: #1B475D;
+    border: none;
+    border-radius: 50%;
+    position: fixed;
+    right: 45px;
+    bottom: 45px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+    z-index: 1000;
 }
 
-.elBoton:hover {
-    background-color: #d32f2f;
+#elBoton:hover {
+    width: 90px;
+    height: 90px;
+    background-color: #FA9564 ;
+    font-size: 50px;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }

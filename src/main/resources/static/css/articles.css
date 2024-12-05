@@ -49,6 +49,8 @@
 }
 
 .TableItem img{
+    margin-top: 5px;
+    padding: 5px;
     max-width: 50%;
 
 }

@@ -67,7 +67,6 @@ body {
 
 .LgButtons{
     display: flex;
-    flex-direction: c;
     width: 60%;
     justify-content: space-around;
 }

@@ -15,10 +15,10 @@
     
     height: 50%;
     width: 50%;
-
+    border-radius: 10px;
     justify-content: space-between;
     align-items: center;
-    background-color: red;
+    background: linear-gradient(rgba(142, 189, 157,5),rgba(27, 71, 93,5));
 }
 
 
@@ -28,6 +28,7 @@
 
 .articleInfo section img{
     width: 80%;
+    border-radius: 12px;
 }
 
 .articleInfo main{
