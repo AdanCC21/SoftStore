@@ -32,16 +32,35 @@
         </div>
         <div>
             <h1>Enviar a</h1>
-            <div>
-                <input id="country" placeholder="Country" type="text">
-                <input id="city" placeholder="City" type="text">
-                <input id="zipCode" placeholder="Zip code" type="number">
-                <input id="street" placeholder="Street" type="text">
-                <input id="houseNumber" placeholder="House number" type="number">
-                <input id="additionalDescription" placeholder="Additional description" type="text">
+            <div th:each="user : ${currentUser}">
+                <input id="country" placeholder="Country" type="text" th:value="${user.country}" >
+                <input id="city" placeholder="City" type="text" th:value="${user.city}">
+                <input id="zipCode" placeholder="Zip code" type="number" th:value="${user.zipCode}">
+                <input id="street" placeholder="Street" type="text" th:value="${user.street}">
+                <input id="houseNumber" placeholder="House number" type="number" th:value="${user.houseNumber}">
+                <input id="additionalDescription" placeholder="Additional description" type="text" th:value="${user.additionalDescription}">
             </div>
         </div>
-        <button onclick="window.location.href='/pay'">Realiazr pago</button>
+        <button onclick="sendData()">Realiazr pago</button>
+        <script>
+            function sendData (){
+                const country = document.getElementById("country").value;
+                const city = document.getElementById("city").value;
+                const zipCode = document.getElementById("zipCode").value;
+                const street = document.getElementById("street").value;
+                const houseNumber = document.getElementById("houseNumber").value;
+                const additionalDescription = document.getElementById("additionalDescription").value;
+                
+                const rute = "/pay/"+country+"/"+city+"/"+zipCode+"/"+street+"/"+houseNumber+"/"+additionalDescription;
+                window.location.href=rute;
+                country.value = "";
+                city.value = "";
+                zipCode.value = "";
+                street.value = "";
+                houseNumber.value = "";
+                additionalDescription.value = "";
+            };
+        </script>
     </div>
 </body>
 </html>

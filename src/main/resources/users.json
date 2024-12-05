@@ -1,21 +1,19 @@
-[
-  {
-    "email": "adan@manada.com",
-    "password": "adan12345",
-    "country": "",
-    "city": "",
-    "zipCode": "",
-    "street": "",
-    "houseNumber": "",
-    "additionalDescription": ""
-  },{
-    "email": "antonio@manada.com",
-    "password": "antonio12345",
-    "country": "",
-    "city": "",
-    "zipCode": "",
-    "street": "",
-    "houseNumber": "",
-    "additionalDescription": ""
-  }
-]
+[ {
+  "email" : "adan@manada.com",
+  "password" : "adan12345",
+  "country" : "Mexicoooooooo",
+  "city" : "Ensenada",
+  "zipCode" : "22852",
+  "street" : "Aca",
+  "houseNumber" : "321",
+  "additionalDescription" : "Casita"
+}, {
+  "email" : "antonio@manada.com",
+  "password" : "antonio12345",
+  "country" : "Mexico",
+  "city" : "Ensenada",
+  "zipCode" : "228522213",
+  "street" : "awd",
+  "houseNumber" : "213",
+  "additionalDescription" : "Simon"
+} ]

@@ -20,9 +20,6 @@ public class jsonService {
 
 
     // ----------------------------------------------------------------------------------------
-    public void saveJson(List<Articles> articles) throws IOException{
-        objectMap.writerWithDefaultPrettyPrinter().writeValue(new File(dataBaseRoute),articles);
-    }
 
     public void saveCart(List<Articles> articles) throws IOException{
         objectMap.writerWithDefaultPrettyPrinter().writeValue(new File(shopCarRoute),articles);
@@ -89,7 +86,6 @@ public class jsonService {
         }
         return null;
     }
-    //    --------------------------------- USUARIO ---------------------------------   //
 
     public List<User> getUsers()throws IOException{
         File usersFile = new File(usersRoute);
@@ -99,21 +95,21 @@ public class jsonService {
         return objectMap.readValue(usersFile, new TypeReference<List<User>>() {});
     }
 
-    public User searchUser(String email) throws IOException{
+    public User searchUser(String email, String password) throws IOException{
         List<User> users = getUsers();
         if(users != null){
             for(var temp : users){
                 if(temp.email.equals(email)){
-                    return temp;
+                    if(temp.password.equals(password)){
+                        return temp;
+                    }
                 }
             }
         }
         return null;
     }
 
-//    public void setAddress (User user)throws  IOException{
-//        if(User temp = searchUser(user.email) != null){
-//
-//        }
-//    }
+    public void saveJson(List<User> userList) throws IOException{
+        objectMap.writerWithDefaultPrettyPrinter().writeValue(new File(usersRoute),userList);
+    }
 }

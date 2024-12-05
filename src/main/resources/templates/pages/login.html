@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fuente de letra -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <title>MonkeyStore</title>
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+</head>
+<body>
+    <h1>Login</h1>
+    <input id="email" placeholder="Email" type="email">
+    <input id="password" placeholder="Password" type="password">
+    <button id="continueButton">Continue</button>
+
+    <script>
+        document.getElementById("continueButton").addEventListener("click", function() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (!email || !password) {
+                alert("Por favor, completa ambos campos.");
+                return;
+            }
+
+            const rute = '/validate/' + email + '/' + password;
+            console.log(rute)
+            window.location.href=rute;
+        });
+    </script>
+
+
+</body>
+</html>

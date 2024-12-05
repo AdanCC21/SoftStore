@@ -2,7 +2,7 @@ package com.softStore.softStore.Class;
 
 public class User {
     public String email;
-    public String passwoard;
+    public String password;
     public String country;
     public String city;
     public String zipCode;
@@ -10,14 +10,27 @@ public class User {
     public String houseNumber;
     public String additionalDescription;
 
-    public User(String email, String passwoard) {
-        this.email = email;
-        this.passwoard = passwoard;
+    public User(){
+
     }
 
-    public User(String email, String passwoard, String country, String city, String zipCode, String street, String houseNumber, String additionalDescription) {
+    public User(String email, String password) {
         this.email = email;
-        this.passwoard = passwoard;
+        this.password = password;
+    }
+
+    public User(String email, String password, String country, String city, String zipCode, String street, String houseNumber, String additionalDescription) {
+        this.email = email;
+        this.password = password;
+        this.country = country;
+        this.city = city;
+        this.zipCode = zipCode;
+        this.street = street;
+        this.houseNumber = houseNumber;
+        this.additionalDescription = additionalDescription;
+    }
+
+    public void setAddress(String country, String city, String zipCode, String street, String houseNumber, String additionalDescription){
         this.country = country;
         this.city = city;
         this.zipCode = zipCode;
@@ -34,12 +47,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPasswoard() {
-        return passwoard;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswoard(String passwoard) {
-        this.passwoard = passwoard;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getCountry() {
