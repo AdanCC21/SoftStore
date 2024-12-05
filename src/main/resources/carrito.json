@@ -38,4 +38,8 @@
   "name" : "USB-C Charger",
   "price" : 29.99,
   "id" : 9
+}, {
+  "name" : "Smartphone",
+  "price" : 799.99,
+  "id" : 2
 } ]

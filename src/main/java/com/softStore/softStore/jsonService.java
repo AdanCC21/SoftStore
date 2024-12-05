@@ -1,6 +1,7 @@
 package com.softStore.softStore;
 
 import com.softStore.softStore.Class.Articles;
+import com.softStore.softStore.Class.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -15,6 +16,7 @@ public class jsonService {
 
     private final String dataBaseRoute = "src/main/resources/articles.json";
     private final String shopCarRoute = "src/main/resources/carrito.json";
+    private final String usersRoute = "src/main/resources/users.json";
 
 
     // ----------------------------------------------------------------------------------------
@@ -77,6 +79,7 @@ public class jsonService {
         }
         return output;
     }
+
     public Articles searchArticleById(int id)throws IOException{
         List<Articles> dataBase = getArticles();
         for( var temp : dataBase){
@@ -86,4 +89,31 @@ public class jsonService {
         }
         return null;
     }
+    //    --------------------------------- USUARIO ---------------------------------   //
+
+    public List<User> getUsers()throws IOException{
+        File usersFile = new File(usersRoute);
+        if(!usersFile.exists()){
+            return null;
+        }
+        return objectMap.readValue(usersFile, new TypeReference<List<User>>() {});
+    }
+
+    public User searchUser(String email) throws IOException{
+        List<User> users = getUsers();
+        if(users != null){
+            for(var temp : users){
+                if(temp.email.equals(email)){
+                    return temp;
+                }
+            }
+        }
+        return null;
+    }
+
+//    public void setAddress (User user)throws  IOException{
+//        if(User temp = searchUser(user.email) != null){
+//
+//        }
+//    }
 }

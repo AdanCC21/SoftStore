@@ -86,4 +86,8 @@ public class Controller {
         return message; // Simplemente retransmite el mensaje recibido
     }
 
+    @GetMapping("/buy")
+    public String sendToBuy(){
+        return "pages/buy";
+    }
 }

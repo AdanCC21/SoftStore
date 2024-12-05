@@ -1,0 +1,21 @@
+[
+  {
+    "email": "adan@manada.com",
+    "password": "adan12345",
+    "country": "",
+    "city": "",
+    "zipCode": "",
+    "street": "",
+    "houseNumber": "",
+    "additionalDescription": ""
+  },{
+    "email": "antonio@manada.com",
+    "password": "antonio12345",
+    "country": "",
+    "city": "",
+    "zipCode": "",
+    "street": "",
+    "houseNumber": "",
+    "additionalDescription": ""
+  }
+]

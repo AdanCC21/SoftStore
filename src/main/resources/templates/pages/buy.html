@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fuente de letra -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <title>MonkeyStore</title>
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="/css/topBar.css" type="text/css">
+</head>
+<body>
+    <section class="TopBar">
+        <a href="/Articles" style="color: white; text-decoration: none;">
+            <h1>SoftStore</h1>
+        </a>
+        
+        <a href="chat" id="soporte"><img src="/assets/icons/help.png" height="20px"></a>
+    </section>
+    <div>
+        <h1>Comprar</h1>
+        <div>
+            <h2>Selecciona un metodo de pago</h2>
+            <div>
+                <a>Debito</a>
+                <a>Credito</a>
+                <a>Efectivo Oxxo</a>
+            </div>
+        </div>
+        <div>
+            <h1>Enviar a</h1>
+            <div>
+                <input id="country" placeholder="Country" type="text">
+                <input id="city" placeholder="City" type="text">
+                <input id="zipCode" placeholder="Zip code" type="number">
+                <input id="street" placeholder="Street" type="text">
+                <input id="houseNumber" placeholder="House number" type="number">
+                <input id="additionalDescription" placeholder="Additional description" type="text">
+            </div>
+        </div>
+        <button onclick="window.location.href='/pay'">Realiazr pago</button>
+    </div>
+</body>
+</html>
