@@ -1,0 +1,55 @@
+.chatFather{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 80vh;
+}
+
+.chat{
+    align-items: start;
+    background-color: #43E5A0;
+    border-radius: 32px;
+
+    color: white;
+    font-weight: 600;
+    text-align: start;
+    padding: 2%;
+    
+    width: 60%;
+    height: 80%;
+    overflow-y: auto;
+}
+
+.chat div{
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.chatInput{
+    margin: 2%;
+    padding: 1%;
+    
+    height: 10%;
+    width: 40%;
+    
+    border-radius: 32px;
+    background-color: #126945;
+}
+
+.chatInput input{
+    height: 100%;
+    width: 80%;
+    border-radius: 32px;
+    border: none;
+}
+
+.chatInput button{
+    height: 100%;
+    width: 15%;
+    border-radius: 32px;
+    border: none;
+    background-color: white;
+}

@@ -1,5 +1,41 @@
 [ {
-  "name" : "Gaming Mouse",
-  "price" : 59.99,
-  "id" : 6
+  "name" : "Laptop",
+  "price" : 1200.5,
+  "id" : 1
+}, {
+  "name" : "Smartphone",
+  "price" : 799.99,
+  "id" : 2
+}, {
+  "name" : "Smartphone",
+  "price" : 799.99,
+  "id" : 2
+}, {
+  "name" : "Tablet",
+  "price" : 499.99,
+  "id" : 3
+}, {
+  "name" : "Smartwatch",
+  "price" : 199.99,
+  "id" : 4
+}, {
+  "name" : "Laptop",
+  "price" : 1200.5,
+  "id" : 1
+}, {
+  "name" : "Portable Speaker",
+  "price" : 99.99,
+  "id" : 10
+}, {
+  "name" : "Smartphone",
+  "price" : 749.99,
+  "id" : 12
+}, {
+  "name" : "Mechanical Keyboard",
+  "price" : 129.99,
+  "id" : 7
+}, {
+  "name" : "USB-C Charger",
+  "price" : 29.99,
+  "id" : 9
 } ]

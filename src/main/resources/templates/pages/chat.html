@@ -9,8 +9,8 @@
 
     <title>MonkeyStore</title>
     <link rel="stylesheet" href="/css/styles.css" type="text/css">
-    <link rel="stylesheet" href="/css/articles.css" type="text/css">
     <link rel="stylesheet" href="/css/topBar.css" type="text/css">
+    <link rel="stylesheet" href="/css/chat.css" type="text/css">
 
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
@@ -25,40 +25,16 @@
     </section>
 
     <h1>Chat en Tiempo Real</h1>
+    <section class="chatFather">
+        <div id="chat" class="chat">
+            <div id="messages"></div>
+        </div>
+        <div class="chatInput">
+            <input id="messageInput" type="text" placeholder="Escribe tu mensaje aquí..." />
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </section>
 
-    <div id="chat">
-        <div id="messages"></div>
-        <input id="messageInput" type="text" placeholder="Escribe tu mensaje aquí..." />
-        <button onclick="sendMessage()">Enviar</button>
-    </div>
-
-    <script>
-        let stompClient = null;
-
-        function connect() {
-            const socket = new SockJS('/chat');
-            stompClient = Stomp.over(socket);
-            stompClient.connect({}, function () {
-                stompClient.subscribe('/topic/messages', function (message) {
-                    showMessage(message.body);
-                });
-            });
-        }
-
-        function sendMessage() {
-            const message = document.getElementById("messageInput").value;
-            stompClient.send("/app/sendMessage", {}, message);
-            document.getElementById("messageInput").value = '';
-        }
-
-        function showMessage(message) {
-            const messagesDiv = document.getElementById("messages");
-            const messageElement = document.createElement("div");
-            messageElement.textContent = message;
-            messagesDiv.appendChild(messageElement);
-        }
-
-        connect();
-    </script>
+    <script src="/JS/connect.js"></script>
 </body>
 </html>

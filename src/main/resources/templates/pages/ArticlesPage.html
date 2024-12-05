@@ -16,35 +16,31 @@
 </head>
 <body>
     <section class="TopBar">
-        <h1>SoftStore</h1>
+        <a href="/Articles" style="color: white; text-decoration: none;">
+            <h1>SoftStore</h1>
+        </a>
         <form>
             <input type="text" id="articuloName" />
             <button type="button" onclick="window.location.href='/search/' + document.getElementById('articuloName').value">⌕</button>
         </form>
 
-        <a href="chat" id="soporte">Soporte</a>
+        <!-- <a href="car" id="shoppingCart"><img src="/assets/icons/cart.png"></a> -->
+        <a href="chat" id="soporte"><img src="/assets/icons/help.png" height="20px"></a>
     </section>
-    <button id="elBoton" onclick="window.location.href='/car'">🛒</button>
+    
+    <button id="shoppingCart" onclick="window.location.href='/car'">🛒</button>
 
-    <main class="Table">
-        <a th:each="articulo : ${listaArticulos}" class="TableItem" th:href="@{/article/{id}(id=${articulo.id})}" >
-            <img src="/assets/celular_triste.png">
-            <h3 th:text="${articulo.name}"></h3>
-            <p th:text="'Price ' + ${articulo.price}"></p>
-        </a>
-        <script>
-            document.querySelectorAll('.TableItem').forEach(item => {
-                const h3 = item.querySelector('h3'); // Selecciona el h3 dentro de cada <a>
-
-                const img = item.querySelector('img'); // Selecciona la imagen dentro de cada <a>
-                if (h3 && img) {
-                    const h3Text = h3.textContent.trim(); // Obtén el texto del h3
-                    img.src = `/assets/${h3Text}.jpg`; // Cambia el src de la imagen
-                }
-            });
-        </script>
-        <script src="/JS/scripts.js"></script>
+    <main class="TableFather">
+        <section class="Table">
+            <a th:each="articulo : ${listaArticulos}" class="TableItem" th:href="@{/article/{id}(id=${articulo.id})}" >
+                <img src="/assets/celular_triste.png">
+                <h3 th:text="${articulo.name}"></h3>
+                <p th:text="'Price ' + ${articulo.price}"></p>
+            </a>
+        </section>
+        
     </main>
-
+    
+    <script src="/JS/scripts.js"></script>
 </body>
 </html>

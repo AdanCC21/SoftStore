@@ -17,10 +17,10 @@
 <body>
     <section class="TopBar">
         <a href="/Articles" style="color: white; text-decoration: none;">
-            <h1>CimaStore</h1>
+            <h1>SoftStore</h1>
         </a>
 
-        <a href="chat" id="soporte" style="color: white; text-decoration: none;">Soporte</a>
+        <a href="chat" id="soporte"><img src="/assets/icons/help.png" height="20px"></a>
     </section>
 
     <!-- Base -->
@@ -30,12 +30,14 @@
                 <img src="/assets/celular_triste.png" id="articleImage">
             </section>
 
+            <div></div>
+
             <!-- Informacion -->
             <main th:each="art : ${articulo}">
                 <h1 th:text="${art.name}" id="articleName">Titulo</h1>
-                <p th:text="${art.price}">Descripcion</p>
+                <p th:text="${art.price}">Precio</p>
 
-                <a th:href="@{/add/{name}/{price}/{id}(name=${articulo.name}, price=${articulo.price}, id=${articulo.id})}" style="color:white; text-decoration:none;">Agregar</a>
+                <a th:href="@{/add/{name}/{price}/{id}(name=${articulo.name}, price=${articulo.price}, id=${articulo.id})}">Agregar</a>
                 <script>
                     var articleName =  document.getElementById("articleName").textContent
                     var image = document.getElementById("articleImage");

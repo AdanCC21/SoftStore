@@ -12,15 +12,23 @@
 
 .articleInfo{
     display: flex;
-    
-    height: 50%;
-    width: 50%;
-    border-radius: 10px;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(rgba(142, 189, 157,5),rgba(27, 71, 93,5));
+    
+    font-size: 2vh;
+    height: 50%;
+    width: 50%;
+    
+    border-radius: 10px;
+    background-color: #43E5A0;
 }
 
+.articleInfo div{
+    width: 1%;
+    height: 80%;
+    background-color: white;
+    border-radius: 32px;
+}
 
 .articleInfo section{
     width: 50%;
@@ -32,6 +40,7 @@
 }
 
 .articleInfo main{
+    width: 50%;
     display: flex;
     flex-direction: column;
 
@@ -40,4 +49,18 @@
     
     width: 50%;
     height: 100%;
+}
+
+.articleInfo main h1{
+    font-size: 6vh;
+}
+
+.articleInfo main a{
+    color: white;
+    text-decoration: none;
+    transition: all ease-in-out 0.2s;
+}
+
+.articleInfo main a:hover{
+    text-decoration: underline;
 }

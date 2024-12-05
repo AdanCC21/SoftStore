@@ -16,31 +16,39 @@
 <body>
     <section class="TopBar">
         <a href="/Articles" style="color: white; text-decoration: none;">
-            <h1>CimaStore</h1>
+            <h1>SoftStore</h1>
         </a>
-
-        <a href="chat" style="color: white; text-decoration: none;">Ayuda</a>
+        
+        <a href="chat" id="soporte"><img src="/assets/icons/help.png" height="20px"></a>
     </section>
 
     <h1>Shop Car</h1>
-    <main class="Table">
-        <a class="TableItem" th:each="articulo : ${listaArticulos}" th:href="@{/article/{id}(id=${articulo.id})}">
-            <img src="/assets/celular_triste.png">
-            <h1 th:text="${articulo.name}"></h1>
-            <p th:text="${articulo.price}"></p>
-            <a th:href="@{/delete/{id}(id=${articulo.id})}">Delete</a>
-        </a>
-        <script>
-            document.querySelectorAll('.TableItem').forEach(item => {
-                const h3 = item.querySelector('h1'); // Selecciona el h3 dentro de cada <a>
-                const img = item.querySelector('img'); // Selecciona la imagen dentro de cada <a>
-
-                if (h3 && img) {
-                    const h3Text = h3.textContent.trim(); // Obtén el texto del h3
-                    img.src = `/assets/${h3Text}.jpg`; // Cambia el src de la imagen
-                }
-            });
-        </script>
+    <main class="TableFather">
+        <div class="Table">
+            <div class="TableItem" th:each="articulo : ${listaArticulos}">
+                <a th:href="@{/article/{id}(id=${articulo.id})}">
+                    <img src="/assets/celular_triste.png">
+                    <h1 th:text="${articulo.name}"></h1>
+                    <p th:text="${articulo.price}"></p>
+                </a>
+                <button th:onclick="'window.location.href=\'/delete/' + ${articulo.id} + '\''">Delete</button>
+            </div>
+            <script>
+                document.querySelectorAll('.TableItem').forEach(item => {
+                    const h3 = item.querySelector('h1'); // Selecciona el h3 dentro de cada <a>
+                    const img = item.querySelector('img'); // Selecciona la imagen dentro de cada <a>
+    
+                    if (h3 && img) {
+                        const h3Text = h3.textContent.trim(); // Obtén el texto del h3
+                        img.src = `/assets/${h3Text}.jpg`; // Cambia el src de la imagen
+                    }
+                });
+            </script>
+        </div>
     </main>
+    <button class="Buy">Comprar</button>
+    
+    
+    
 </body>
 </html>

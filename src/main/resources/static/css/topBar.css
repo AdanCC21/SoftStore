@@ -1,54 +1,93 @@
 .TopBar{
-    margin: 0 auto;
     display: flex;
-    background-color: #1B475D;
+    background-color: #43E5A0;
+    
     align-items: center;
     justify-content: space-between;
+    
+    margin: 0 auto;
     padding: 10px 25px;
+    border-bottom-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+}
+
+.TopBar h1{
+    margin: 0;
+    font-size: 2vw;
 }
 
 .TopBar button{
-    border-radius: 15px;
+    background: #FAD564;
+    
     width: 30px;
     height: 30px;
     font-size: 25px;
+    
     border: none;
-    background: #FAD564;
+    border-radius: 15px;
     padding: 0;
+    cursor: pointer;
 }
-.TopBar input{
-    border-radius: 10px;
-    height: 25px;
-    width: 150px;
-    background: #8EBD9D;
+
+
+.TopBar form {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+}
+
+
+.TopBar form input{
+    border-radius: 32px;
+    
+    height: 30px;
+    width: 100%;
+    
+    background-color: white;
+    
+    margin-right: 2%;
     border: none;
 }
+.TopBar form input:focus{
+    border: none;
+}
+
+
 #soporte{
     left: 5px;
     color: azure;
 }
 
-#elBoton {
+#shoppingCart {
     width: 60px;
     height: 60px;
+    
     background-color: #FAD564;
     color: #1B475D;
+    
     border: none;
     border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
     position: fixed;
     right: 45px;
     bottom: 45px;
+    
     font-size: 24px;
+    
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s;
     z-index: 1000;
+    
+    transition: all ease-in-out 0.3s;
 }
 
-#elBoton:hover {
+#shoppingCart:hover {
     width: 90px;
     height: 90px;
+    
     background-color: #FA9564 ;
+    
     font-size: 50px;
 }
 

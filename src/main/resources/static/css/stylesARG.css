@@ -1,21 +1,37 @@
-#ContinueButton{
-    background-color: #FAD564;
-    color: #1B475D;
-    border: none;
-    margin: auto;
-    padding: 15px 10px;
-    /*border-bottom: 2px solid white;
-    ;*/
-    border-radius: 10px;
-}
-main{
+.startPage{
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-.startPage{
 
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+.Title{
+    display: flex;
+    flex-direction: column;
+    transform: translate(0px,-20px);
+    color: white;
+    opacity: 0;
+    transition: all ease-in-out 1.5s;
+}
+
+.Title h1{
+    margin: 0;
+    font-size: 5vw;
+}
+
+
+.Title h2{
+    margin: 0;
+    font-size: 2vw;
+}
+
+.Title.spawn{
+    opacity: 1;
+    transform: translate(0px,0px);
 }
 
 
