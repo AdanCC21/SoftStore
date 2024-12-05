@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,16 +16,9 @@ public class jsonService {
     private final ObjectMapper objectMap = new ObjectMapper();
 
     private final String dataBaseRoute = "src/main/resources/articles.json";
-    private final String shopCarRoute = "src/main/resources/carrito.json";
+//    private final String shopCarRoute = "src/main/resources/carrito.json";
     private final String usersRoute = "src/main/resources/users.json";
-
-
-    // ----------------------------------------------------------------------------------------
-
-    public void saveCart(List<Articles> articles) throws IOException{
-        objectMap.writerWithDefaultPrettyPrinter().writeValue(new File(shopCarRoute),articles);
-    }
-    // ----------------------------------------------------------------------------------------
+    private final String baseRoute = "src/main/resources/";
 
     // ----------------------------------------------------------------------------------------
     public List<Articles> getArticles() throws IOException{
@@ -35,8 +29,15 @@ public class jsonService {
         return objectMap.readValue(bd, new TypeReference<List<Articles>>() {});
     }
 
-    public List<Articles> getCart()throws IOException{
-        File car = new File(shopCarRoute);
+    public void saveCart(List<Articles> articles, String userEmail) throws IOException{
+        String rute = baseRoute + userEmail+".json";
+        objectMap.writerWithDefaultPrettyPrinter().writeValue(new File(rute),articles);
+    }
+
+    public List<Articles> getCart(String userEmail)throws IOException{
+        String rute = baseRoute + userEmail+".json";
+        File car = new File(rute);
+
         if(!car.exists()){
             return new ArrayList<>();
         }
@@ -45,19 +46,19 @@ public class jsonService {
     // ----------------------------------------------------------------------------------------
 
 
-    public void addToCart(Articles newArticle) throws IOException {
-        List<Articles> articlesList = getCart();
+    public void addToCart(Articles newArticle, String userEmail) throws IOException {
+        List<Articles> articlesList = getCart(userEmail);
         articlesList.add(newArticle);
-        saveCart(articlesList);
+        saveCart(articlesList, userEmail);
     }
 
-    public boolean deleteFromCart(int id) throws  IOException{
-        List<Articles> articlesList = getCart();
+    public boolean deleteFromCart(int id, String userEmail) throws  IOException{
+        List<Articles> articlesList = getCart(userEmail);
         boolean done = false;
         for( Articles ar : articlesList){
           if(ar.id == id){
               articlesList.remove(ar);
-              saveCart(articlesList);
+              saveCart(articlesList,userEmail);
               done=true;
               break;
           }

@@ -58,20 +58,23 @@ public class Controller {
     @GetMapping("/add/{name}/{price}/{id}")
     public String addArticle(@PathVariable String name, @PathVariable double price, @PathVariable int id, Model model)throws IOException {
         Articles temp = new Articles(name,price,id);
-        jsonConnect.addToCart(temp);
+        User user = ct.getCurrentUser();
+        jsonConnect.addToCart(temp, user.email);
         return "pages/done";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteArticle(@PathVariable int id, Model model)throws IOException {
-        jsonConnect.deleteFromCart(id);
+        User user = ct.getCurrentUser();
+        jsonConnect.deleteFromCart(id,user.email);
         return "pages/done";
     }
 
     @GetMapping("/car")
     public String cart(Model model){
         try {
-            List<Articles> lista = jsonConnect.getCart();
+            User user = ct.getCurrentUser();
+            List<Articles> lista = jsonConnect.getCart(user.email);
             model.addAttribute("listaArticulos",lista);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -87,7 +90,8 @@ public class Controller {
     @MessageMapping("/sendMessage") // Cliente envía aquí los mensajes
     @SendTo("/topic/messages") // Mensajes retransmitidos a todos los suscriptores
     public String handleMessage(String message) {
-        return message; // Simplemente retransmite el mensaje recibido
+        User user = ct.getCurrentUser();
+        return user.email + " say : " + message;
     }
 
     @GetMapping("/buy")
