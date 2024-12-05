@@ -16,3 +16,11 @@ document.querySelectorAll('.TableItem').forEach(item => {
         img.src = `/assets/${h3Text}.jpg`; // Cambia el src de la imagen
     }
 });
+
+
+
+// document.getElementById('articuloName').addEventListener('keypres', function(event){
+//     if(event === 'Enter'){
+//         window.location.href='/search/' + document.getElementById('articuloName').value;
+//     }
+// });
